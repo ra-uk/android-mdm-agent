@@ -32,7 +32,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -106,20 +105,22 @@ public class StartEnrollmentActivity extends Activity implements Deeplink.View {
         btnEnroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Build.VERSION.SDK_INT < 23) {
-                    mPermissions = true;
-                }
+                openMain();
 
-                if(mPermissions) {
-                    btnEnroll.setVisibility(View.GONE);
-                    txtMessage.setText(getResources().getString(R.string.please_wait));
-                    pb.setVisibility(View.VISIBLE);
-
-                    presenter.openEnrollment(StartEnrollmentActivity.this, REQUEST_EXIT);
-                } else {
-                    showError("All permissions are require");
-                    requestPermission();
-                }
+//                if(Build.VERSION.SDK_INT < 23) {
+//                    mPermissions = true;
+//                }
+//s
+//                if(mPermissions) {
+//                    btnEnroll.setVisibility(View.GONE);
+//                    txtMessage.setText(getResources().getString(R.string.please_wait));
+//                    pb.setVisibility(View.VISIBLE);
+//
+//                    presenter.openEnrollment(StartEnrollmentActivity.this, REQUEST_EXIT);
+//                } else {
+//                    showError("All permissions are require");
+//                    requestPermission();
+//                }
             }
         });
     }
